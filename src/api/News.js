@@ -8,5 +8,5 @@ export const requestGetArticles = async (props) => {
     const query = `${URL + category}&apiKey=${APIKEY}`;
 
     const response = await axios.get(query);
-    return response.data.articles;
+    return response.data;
 };

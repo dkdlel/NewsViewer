@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { /*useCallback,*/ useEffect, useState } from 'react';
+import useSWR from 'swr';
 /* Library */
 
 import Categories from '../containers/Categories/CategoriesContainer';
@@ -14,19 +15,27 @@ const NewsPage = ({ match }) => {
 
     const [articles, setArticles] = useState([]);
 
-    const requestArticles = useCallback(async (category) => {
-        setArticles([]);
-        const data = await requestGetArticles(category);
-        setArticles(data);
-    }, []);
-
+    const { data, error } = useSWR([category], requestGetArticles);
     useEffect(() => {
-        try {
-            requestArticles(category);
-        } catch (e) {
-            console.log('error')
-        }
-    }, [category, requestArticles]);
+        if (!data) setArticles([]);
+        else if (error) console.log('error');
+        else setArticles(data.articles);
+    }, [data, error])
+
+    // swr 사용전
+    // const requestArticles = useCallback(async (category) => {
+    //     setArticles([]);
+    //     const { articles } = await requestGetArticles(category);
+    //     setArticles(articles);
+    // }, []);
+
+    // useEffect(() => {
+    //     try {
+    //         requestArticles(category);
+    //     } catch (e) {
+    //         console.log('error')
+    //     }
+    // }, [category, requestArticles]);
 
     return (
         <>

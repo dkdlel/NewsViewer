@@ -10,6 +10,7 @@ import styles from './NewsListContainer.module.scss';
 const NewsListContainer = ({ articles }) => {
 
     return (
+        // 스켈레톤 사용 전
         // <section className={styles['wrap']}>
         //     {articles.map(article => (
         //             <NewsItem key={article.url} article={article} />
