@@ -21,7 +21,7 @@ yarn add swr
 ```
 * 모두의 주차장 당시 비동기(원인 추정)로 인한 오류를 해결하기 위해 SWR을 알게됨
 * React Hooks for Remote Data Fetching이라는 소개처럼 데이터를 가져오는 데(get) 특화되어 있는 라이브러리
-* useSWR은 useEffect처럼 동작하기 떄문에 useEffect안에서 사용불가
+* useSWR은 useEffect처럼 동작하기 때문에 useEffect안에서 사용불가
 * SWR : stale-while-revalidate
     - stale : 캐쉬에서 데이터를 반환
     - revalidate : fetch 요청을 전송 후 최신 data를 가져옴
