@@ -2,12 +2,23 @@
 * https://newsapi.org 에서 제공하는 API를 사용하여 데이터를 받아옴
 
 ## axios
-* 현재 가장 많이 사용되고 있는 자바스크립트 HTTP 클라이언트
 ```
 yarn add axios
 ```
+* 현재 가장 많이 사용되고 있는 자바스크립트 HTTP 클라이언트
+* HTTP 요청을 Promise 기반으로 처리
+
+## 데이터 연동시 주의사항
+* useEffect에 async를 붙이면 안됨
+    - useEffect에서 반환해야 하는 값은 뒷정리 함수이기 때문
+    - useEffect 내부에서 async/await를 사용하고 싶다면, 함수 내부에 async 키워드가 붙은 또 다른 함수를 만들어서 사용
+    
+* 추후 리덕스를 다시 공부한 후 loading상태를 관리예정
 
 ## SWR
+```
+yarn add swr
+```
 * 모두의 주차장 당시 비동기(원인 추정)로 인한 오류를 해결하기 위해 SWR을 알게됨
 * React Hooks for Remote Data Fetching이라는 소개처럼 데이터를 가져오는 데(get) 특화되어 있는 라이브러리
 * useSWR은 useEffect처럼 동작하기 떄문에 useEffect안에서 사용불가
@@ -19,9 +30,7 @@ yarn add axios
 
 [공식문서] : https://swr.vercel.app/   
 [참고] : https://velog.io/@silver2473/axios-%EC%99%B8%EA%B8%B8%EC%9D%B8%EC%83%9D-swr%EC%9D%84-%EB%A7%8C%EB%82%98%EB%8B%A4
-```
-yarn add swr
-```
+
 
 ## Skeleton
 * Skeleton을 사용해보기 위한 목적
