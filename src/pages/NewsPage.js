@@ -15,6 +15,7 @@ const NewsPage = ({ match }) => {
     const [articles, setArticles] = useState([]);
 
     const requestArticles = useCallback(async (category) => {
+        setArticles([]);
         const data = await requestGetArticles(category);
         setArticles(data);
     }, []);

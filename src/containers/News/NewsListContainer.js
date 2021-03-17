@@ -10,12 +10,17 @@ import styles from './NewsListContainer.module.scss';
 const NewsListContainer = ({ articles }) => {
 
     return (
+        // <section className={styles['wrap']}>
+        //     {articles.map(article => (
+        //             <NewsItem key={article.url} article={article} />
+        //         ))}
+        // </section>
         <section className={styles['wrap']}>
-            {articles.length === 0
-                ? "대기 중..."
-                : articles.map(article => (
+            {articles.length !== 0
+                ? articles.map(article => (
                     <NewsItem key={article.url} article={article} />
                 ))
+                : <NewsItem article={{ title: '' }} />
             }
         </section>
     );
