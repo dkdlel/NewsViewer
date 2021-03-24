@@ -12,8 +12,6 @@ yarn add axios
 * useEffect에 async를 붙이면 안됨
     - useEffect에서 반환해야 하는 값은 뒷정리 함수이기 때문
     - useEffect 내부에서 async/await를 사용하고 싶다면, 함수 내부에 async 키워드가 붙은 또 다른 함수를 만들어서 사용
-    
-* 추후 리덕스를 다시 공부한 후 loading상태를 관리예정
 
 ## SWR
 ```

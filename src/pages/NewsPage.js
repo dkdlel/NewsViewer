@@ -9,18 +9,28 @@ import NewsListContainer from '../containers/News/NewsListContainer';
 import { requestGetArticles } from '../api/News';
 /* API */
 
+import useLoading from '../hooks/useLoading';
+/* Hooks */
+
 const NewsPage = ({ match }) => {
 
     const category = match.params.category || 'all';
 
+    const [onLoading, offLoading] = useLoading();
     const [articles, setArticles] = useState([]);
 
     const { data, error } = useSWR([category], requestGetArticles);
     useEffect(() => {
-        if (!data) setArticles([]);
+        if (!data) {
+            onLoading('article');
+            setArticles([]);
+        }
         else if (error) console.log('error');
-        else setArticles(data.articles);
-    }, [data, error])
+        else {
+            offLoading('article');
+            setArticles(data.articles);
+        }
+    }, [data, error, onLoading, offLoading]);
 
     // swr 사용전
     // const requestArticles = useCallback(async (category) => {
